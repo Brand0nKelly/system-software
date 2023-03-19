@@ -1,3 +1,4 @@
+// This file is responisble for collecting the XML reports in the upload and transferring them the the reporting directory
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -14,7 +15,7 @@ void collect_reports(void) {
     pid_t pid = fork();
 
     if (pid == -1) {
-        // error creating child process
+        // error log creating child process
         syslog(LOG_ERR, "Error creating child process to collect reports");
         return;
     } else if (pid == 0) {
@@ -42,11 +43,11 @@ void collect_reports(void) {
                 syslog(LOG_ERR, "Error collecting reports from upload to reporting directory");
             }
         } else {
-            syslog(LOG_ERR, "Child process to collect reports exited abnormally");
+            syslog(LOG_ERR, "Child process to collect reports exited wrong");
         }
     }
 
-    // unlock directories after collecting reports
+    
     
 }
 

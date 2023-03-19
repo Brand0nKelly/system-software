@@ -21,7 +21,8 @@ void backup_dashboard(void) {
     } else if (pid == 0) {
         // child process
         // use 'rsync' command to copy all files from reporting directory to dashboard directory
-        execl("/usr/bin/rsync", "rsync", "-a", "--delete", "/workspaces/system-software/Assignment/reporting/", "/workspaces/system-software/Assignment/backup_dashboard/", NULL);
+       execl("/usr/bin/rsync", "rsync", "-a", "--delete", "--no-perms", "/workspaces/system-software/Assignment/reporting/", "/workspaces/system-software/Assignment/backup_dashboard/", NULL);
+
 
         // if execl returns, an error has occurred
         syslog(LOG_ERR, "Error backing up dashboard");
@@ -41,7 +42,7 @@ void backup_dashboard(void) {
                 syslog(LOG_ERR, "Error backing up dashboard");
             }
         } else {
-            syslog(LOG_ERR, "Child process to backup dashboard exited abnormally");
+            syslog(LOG_ERR, "Child process to backup dashboard exited wrong");
         }
     }
 

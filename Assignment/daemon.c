@@ -40,8 +40,8 @@ int main()
     struct tm backup_time;
     time(&now);  /* get current time; same as: now = time(NULL)  */
     backup_time = *localtime(&now);
-    backup_time.tm_hour = 15; 
-    backup_time.tm_min = 47; 
+    backup_time.tm_hour = 13; 
+    backup_time.tm_min = 41; 
     backup_time.tm_sec = 0;
 
     // Implementation for Singleton Pattern if desired (Only one instance running)
@@ -101,8 +101,8 @@ int main()
 	  struct tm check_uploads_time;
 	  time(&now);  /* get current time; same as: now = time(NULL)  */
 	  check_uploads_time = *localtime(&now);
-	  check_uploads_time.tm_hour = 15; 
-	  check_uploads_time.tm_min = 46; 
+	  check_uploads_time.tm_hour = 13; 
+	  check_uploads_time.tm_min = 40; 
 	  check_uploads_time.tm_sec = 0;
 	
   	  while(1) {

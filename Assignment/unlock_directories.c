@@ -6,6 +6,8 @@
 #include <syslog.h>
 
 #define DIR_PATH "/workspaces/system-software/Assignment/upload"
+#define REPORTING_DIR_PATH "/workspaces/system-software/Assignment/reporting"
+
 
 void unlock_directories()
 {
@@ -15,6 +17,18 @@ void unlock_directories()
     if (system(cmd) == -1) {
         syslog(LOG_ERR, "Could not unlock directory: %m");
     } else {
-        syslog(LOG_INFO, "Directory unlocked successfully");
+        syslog(LOG_INFO, "Upload Directory unlocked successfully");
     }
+
+strcpy(cmd, "chmod -R 777 ");
+    strcat(cmd, REPORTING_DIR_PATH);
+
+    if (system(cmd) == -1) {
+        syslog(LOG_ERR, "Could not unlock reporting directory: %m");
+    } else {
+        syslog(LOG_INFO, "Reporting directory unlocked successfully");
+    }
+
+
+
 }
